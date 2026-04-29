@@ -25,7 +25,7 @@ object apiConn {
         "Error: Request failed (Connection refused or invalid URL)!"
 
       case e: Exception =>
-        s"Error: An unexpected error occurred: ${e.getMessage}"
+        s"Error: Api not connected. An unexpected error occurred: ${e.getMessage}"
     }
   }
 }
