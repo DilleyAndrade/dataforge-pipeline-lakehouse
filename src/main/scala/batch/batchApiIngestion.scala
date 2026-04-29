@@ -11,6 +11,5 @@ object batchApiIngestion {
   def apiIngestion(): Unit = {
     val url:String = dotenv.get("API_URL")
     val data = getAllData(url, timeout)
-    println(data)
   }
 }
