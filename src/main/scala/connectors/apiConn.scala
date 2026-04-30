@@ -2,7 +2,10 @@ package connectors
 
 object apiConn {
 
-  def getAllData(url: String, timeout: Int): Any = {
+  def getAllData(url: String, timeout: Int, apiName:String): Any = {
+
+    val line_spaces = "="*60
+
     try {
 
       val response = requests.get(
@@ -12,20 +15,25 @@ object apiConn {
       )
 
       if (response.statusCode != 200) {
-        s"Error: Failed to get API data (HTTP ${response.statusCode})"
+        s"Error: Failed to get API(${apiName}) data (HTTP ${response.statusCode})"
       } else {
+        println(line_spaces)
+        println(s"API(${apiName}) connection successfully!")
         ujson.read(response.text())
       }
 
     } catch {
       case _: requests.TimeoutException =>
-        "Error: The request timed out (API took too long to respond)!"
+        println(line_spaces)
+        s"Error: The request timed out (API(${apiName}) took too long to respond)!"
 
       case _: requests.RequestFailedException =>
-        "Error: Request failed (Connection refused or invalid URL)!"
+        println(line_spaces)
+        s"Error: Request failed (API(${apiName}) connection refused or invalid URL)!"
 
       case e: Exception =>
-        s"Error: Api not connected. An unexpected error occurred: ${e.getMessage}"
+        println(line_spaces)
+        s"Error: API(${apiName}) not connected. An unexpected error occurred: ${e.getMessage}"
     }
   }
 }
