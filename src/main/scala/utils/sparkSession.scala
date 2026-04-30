@@ -6,7 +6,7 @@ object sparkSession {
   def spark_session(app_name: String): SparkSession = {
     SparkSession.builder
       .appName(app_name)
-      .master("local[*]")
+      .master("local[*]") // Remove after local testing.
       .getOrCreate()
   }
 }
