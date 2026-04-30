@@ -7,6 +7,8 @@ import io.github.cdimascio.dotenv.Dotenv
 object batchApiIngestion {
 
   // variables
+  val api_name = "transactions"
+
   private val dotenv = Dotenv.load()
   private val timeout = 10000
 
@@ -18,7 +20,7 @@ object batchApiIngestion {
   def apiIngestion(): Unit = {
     // Api connection
     val url:String = dotenv.get("API_URL")
-    val data = getAllData(url, timeout)
+    val data = getAllData(url, timeout, api_name)
 
     // Minio connection
     minio_connection(minio_endpoint, minio_access_key, minio_secret_key)
