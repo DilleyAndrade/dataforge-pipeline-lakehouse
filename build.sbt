@@ -9,6 +9,7 @@ lazy val root = (project in file("."))
       "org.apache.spark" %% "spark-sql" % "3.5.8",
       "com.lihaoyi" %% "requests" % "0.9.3",
       "com.lihaoyi" %% "ujson" % "4.4.3",
-      "io.github.cdimascio" % "dotenv-java" % "2.3.2"
+      "io.github.cdimascio" % "dotenv-java" % "2.3.2",
+      "io.minio" % "minio" % "8.5.7"
     )
   )
