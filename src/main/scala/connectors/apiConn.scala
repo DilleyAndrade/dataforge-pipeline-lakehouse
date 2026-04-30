@@ -15,7 +15,9 @@ object apiConn {
       )
 
       if (response.statusCode != 200) {
-        s"Error: Failed to get API(${api_name}) data (HTTP ${response.statusCode})"
+        throw new RuntimeException(
+          s"Failed to get API(${api_name}) data (HTTP ${response.statusCode})"
+        )
       } else {
         println(line_spaces)
         println(s"API(${api_name}) connection successfully!")
