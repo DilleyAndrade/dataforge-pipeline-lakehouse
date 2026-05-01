@@ -23,10 +23,6 @@ object batchApiIngestion {
 
   val today = LocalDate.now()
 
-  val year  = today.getYear
-  val month = f"${today.getMonthValue}%02d"
-  val day   = f"${today.getDayOfMonth}%02d"
-
   private val minio_endpoint = dotenv.get("MINIO_ENDPOINT")
   private val minio_access_key = dotenv.get("MINIO_ACCESS_KEY")
   private val minio_secret_key = dotenv.get("MINIO_SECRET_KEY")
