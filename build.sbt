@@ -10,6 +10,8 @@ lazy val root = (project in file("."))
       "com.lihaoyi" %% "requests" % "0.9.3",
       "com.lihaoyi" %% "ujson" % "4.4.3",
       "io.github.cdimascio" % "dotenv-java" % "2.3.2",
-      "io.minio" % "minio" % "8.5.7"
+      "io.minio" % "minio" % "8.5.7",
+      "org.apache.hadoop" % "hadoop-aws" % "3.3.4",
+      "com.amazonaws" % "aws-java-sdk-bundle" % "1.12.262"
     )
   )
