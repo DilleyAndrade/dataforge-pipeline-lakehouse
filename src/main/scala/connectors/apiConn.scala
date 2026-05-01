@@ -2,7 +2,7 @@ package connectors
 
 object apiConn {
 
-  def getAllData(url: String, timeout: Int, api_name: String): Any = {
+  def getAllData(url: String, timeout: Int, api_name: String): String = {
 
     val line_spaces = "="*60
 
@@ -21,7 +21,7 @@ object apiConn {
       } else {
         println(line_spaces)
         println(s"API(${api_name}) connection successfully!")
-        ujson.read(response.text())
+        response.text()
       }
 
     } catch {
