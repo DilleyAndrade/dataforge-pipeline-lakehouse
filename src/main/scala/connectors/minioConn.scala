@@ -1,16 +1,24 @@
 package connectors
 
-import io.github.cdimascio.dotenv.Dotenv
 import io.minio.MinioClient
+import org.apache.spark.sql.SparkSession
+
 
 object minioConn {
-  private val dotenv = Dotenv.load()
 
-  def minio_connection(minio_endpoint:String, minio_access_key:String, minio_secret_key:String): Unit = {
+  def minio_connection(spark:SparkSession, minio_endpoint:String, minio_access_key:String, minio_secret_key:String): Unit = {
 
     val endpoint = minio_endpoint
     val accessKey = minio_access_key
     val secretKey = minio_secret_key
+
+    val hadoopConf = spark.sparkContext.hadoopConfiguration
+
+    hadoopConf.set("fs.s3a.access.key", accessKey)
+    hadoopConf.set("fs.s3a.secret.key", secretKey)
+    hadoopConf.set("fs.s3a.endpoint", endpoint)
+    hadoopConf.set("fs.s3a.path.style.access", "true")
+    hadoopConf.set("fs.s3a.impl", "org.apache.hadoop.fs.s3a.S3AFileSystem")
 
     val line_spaces = "="*60
 
