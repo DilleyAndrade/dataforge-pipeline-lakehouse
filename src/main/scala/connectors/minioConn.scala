@@ -5,7 +5,6 @@ import org.apache.spark.sql.SparkSession
 
 
 object minioConn {
-
   def minio_connection(spark:SparkSession, minio_endpoint:String, minio_access_key:String, minio_secret_key:String): Unit = {
 
     val endpoint = minio_endpoint
@@ -28,20 +27,18 @@ object minioConn {
         .credentials(accessKey, secretKey)
         .build()
 
-      // Teste de conexão
+      // Connection test
       val buckets = client.listBuckets()
 
       println(line_spaces)
       println("MinIO connection successfully!")
       println(s"Buckets found: ${buckets.size()}")
-      println(line_spaces)
 
     } catch {
       case e: Exception =>
         println(line_spaces)
-        println("Failed to connec to with MINIO")
+        println("Failed to connect to with MINIO")
         println(s"Erro: ${e.getMessage}")
-        println(line_spaces)
     }
   }
 }
