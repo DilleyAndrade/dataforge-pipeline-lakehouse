@@ -16,7 +16,7 @@ object apiConn {
 
       if (response.statusCode != 200) {
         throw new RuntimeException(
-          s"Failed to get API(${api_name}) data (HTTP ${response.statusCode})"
+          s"Failed to get API ${api_name} data (HTTP ${response.statusCode})"
         )
       } else {
         println(line_spaces)
@@ -27,11 +27,11 @@ object apiConn {
     } catch {
       case _: requests.TimeoutException =>
         println(line_spaces)
-        s"Error: The request timed out (API(${api_name}) took too long to respond)!"
+        s"Error: The request timed out API(${api_name}) took too long to respond!"
 
       case _: requests.RequestFailedException =>
         println(line_spaces)
-        s"Error: Request failed (API(${api_name}) connection refused or invalid URL)!"
+        s"Error: Request failed API(${api_name}) connection refused or invalid URL!"
 
       case e: Exception =>
         println(line_spaces)
